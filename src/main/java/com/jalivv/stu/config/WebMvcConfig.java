@@ -27,7 +27,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
             @Override
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
                 if (request.getSession().getAttribute("user") == null) {
-                    response.sendRedirect(request.getContextPath()+"/back/login.jsp");
+                    // response.sendRedirect(request.getContextPath()+"/back/login.jsp");
+                    request.getRequestDispatcher(request.getContextPath() + "/back/login.jsp").forward(request, response);
                     return false;
                 }
                 return true;
