@@ -11,7 +11,7 @@
             <a class="navbar-brand" href="#">班级管理系统 <small>V1.0</small> </a></div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:;">欢迎:xxxx</a></li>
+                <li><a href="javascript:;">欢迎:${user.name}</a></li>
                 <a href="" target="_top" type="button" class="btn btn-danger navbar-btn">退出</a></ul>
         </div>
     </div>
