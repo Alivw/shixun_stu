@@ -1,0 +1,15 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jalivv.stu.dao.UserDao">
+    <insert id="register" parameterType="com.jalivv.stu.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user
+        values (#{id}, #{name}, #{password}, #{status},
+                #{regtime,jdbcType=TIMESTAMP}, #{role})
+    </insert>
+
+
+    <select id="getUserByUserName" resultType="com.jalivv.stu.entity.User">
+        select id, name, password, status, regtime, role from t_user where name =#{name}
+    </select>
+</mapper>

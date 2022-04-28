@@ -1,0 +1,37 @@
+server:
+  port: 88
+  servlet:
+    context-path: /stu
+
+    jsp:init-parameters:
+      development: true
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+
+  application:
+    name: stu
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://service.aliww.top:3306/shixun_stu?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: jalivv666
+  redis:
+    host: service.aliww.top
+    password: zhiruwakuangchengxumeiyoumasaidbyjalivv
+
+
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.jalivv.stu.entity
+logging:
+  level:
+    com.jalivv.stu.dao: debug
+
+
+
