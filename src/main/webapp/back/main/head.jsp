@@ -12,7 +12,27 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:;">欢迎:${user.name}</a></li>
-                <a href="" target="_top" type="button" class="btn btn-danger navbar-btn">退出</a></ul>
+                <a id="logout" href="javascript:void(0)" target="_top" type="button" class="btn btn-danger navbar-btn">退出</a>
+            </ul>
         </div>
     </div>
+    <script>
+        $(function () {
+            $("#logout").click(function () {
+                $.ajax({
+                    url:'${pageContext.request.contextPath}/user/logout',
+                    method:'post',
+                    contentType:'application/json;charset=utf-8',
+                    success:function (data){
+                        if(data.status){
+
+                        }else
+                            alert(data.message);
+                    }
+                })
+            })
+        })
+    </script>
 </nav>
+
+

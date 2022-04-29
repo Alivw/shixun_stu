@@ -14,11 +14,11 @@ import java.util.List;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
     private static final List<String> EXCLUDE_PATH = Arrays.asList(
-            "/",
-            "/stu/back/static/**",
-            "/stu/back/login.jsp",
-            "/stu/back/register.jsp",
-            "/stu/user/image"
+            "/back/statics/**",
+            "/back/login.jsp",
+            "/back/register.jsp",
+            "/user/image",
+            "/user/login"
     );
 
     @Bean
@@ -28,7 +28,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
                 if (request.getSession().getAttribute("user") == null) {
                     // response.sendRedirect(request.getContextPath()+"/back/login.jsp");
-                    request.getRequestDispatcher(request.getContextPath() + "/back/login.jsp").forward(request, response);
+                    request.getRequestDispatcher("/back/login.jsp").forward(request, response);
                     return false;
                 }
                 return true;
