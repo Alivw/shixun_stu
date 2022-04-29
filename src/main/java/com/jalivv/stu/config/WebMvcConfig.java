@@ -1,5 +1,7 @@
 package com.jalivv.stu.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -13,12 +15,20 @@ import java.util.List;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
+
+
+    private static final Logger logger = LoggerFactory.getLogger(WebMvcConfig.class);
+
+
+
     private static final List<String> EXCLUDE_PATH = Arrays.asList(
+            "/",
             "/back/statics/**",
             "/back/login.jsp",
             "/back/register.jsp",
             "/user/image",
-            "/user/login"
+            "/login",
+            "user/login"
     );
 
     @Bean
@@ -26,11 +36,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
         HandlerInterceptor in = new HandlerInterceptor() {
             @Override
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+                logger.debug("进入拦截器,uri===>{}",request.getRequestURI());
                 if (request.getSession().getAttribute("user") == null) {
                     // response.sendRedirect(request.getContextPath()+"/back/login.jsp");
-                    request.getRequestDispatcher("/back/login.jsp").forward(request, response);
+                    request.getRequestDispatcher("/stu/back/login.jsp").forward(request, response);
+                    logger.debug("return false");
                     return false;
                 }
+                logger.debug("return true");
                 return true;
             }
         };
