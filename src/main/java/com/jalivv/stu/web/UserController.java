@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -78,6 +79,12 @@ public class UserController {
             }
 
             User u = userService.getUserByName(user.getName());
+            if (u == null) {
+                throw new RuntimeException("用户名不存在");
+            }
+            if (!u.getPassword().equals(user.getPassword())) {
+                throw new RuntimeException("密码错误");
+            }
             session.setAttribute("user", u);
             // redisTemplate.opsForValue().set(RedisKeyPrefixConstant.USER_INFO + session.getId(), u);
             redisTemplate.opsForValue().set(RedisKeyPrefixConstant.USER_INFO + session.getId(), u);
