@@ -6,6 +6,7 @@ import com.jalivv.stu.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,10 @@ public class CityController {
 
     @PostMapping("/save")
     public String save(City city){
+        //todo 参数验证
+        if (StringUtils.isEmpty(city.getName())) {
+
+        }
         cityService.save(city);
         return "redirect:/city/list";
     }

@@ -34,6 +34,18 @@
                     <th>创建时间</th>
                     <th>操作</th>
                 </tr>
+                <c:forEach items="${requestScope.tags}" var="tag">
+                    <tr>
+                        <td>${tag.id}</td>
+                        <td>${tag.name}</td>
+                        <td>${tag.type}</td>
+                        <td><fmt:formatDate value="${tag.createtime}"/></td>
+                        <td>
+                            <a href="" class="btn btn-info">修改</a>
+                            <a href="" class="btn btn-danger">删除</a>
+                        </td>
+                    </tr>
+                </c:forEach>
 
             </table>
         </div>
@@ -42,7 +54,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <form action="???" method="post" id="inputForm" class="form-inline">
+            <form action="${pageContext.request.contextPath}/tag/save" method="post" id="inputForm" class="form-inline">
                 <div class="form-group">
                     <label for="name">标签名称:</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="输入标签名称...">
@@ -60,5 +72,16 @@
     </div>
 
 </div>
+
+<script>
+    $(function(){
+
+        $("#inputForm").submit(function(){
+            if(!$("#name").val()){alert('请输入标签名称');return false;}
+            return true;
+        });
+
+    });
+</script>
 
 </body>
