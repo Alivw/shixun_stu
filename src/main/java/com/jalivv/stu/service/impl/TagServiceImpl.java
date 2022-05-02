@@ -26,4 +26,10 @@ public class TagServiceImpl implements TagService {
         tag.setCreatetime(new Date());
         tagDao.save(tag);
     }
+
+    @Override
+    public List<Tag> findByType(String type) {
+        return tagDao.findByType(type);
+
+    }
 }

@@ -37,4 +37,10 @@
         </trim>
     </insert>
 
+
+    <select id="findByType" resultType="com.jalivv.stu.entity.Tag">
+        select id,name,type,createtime from t_tag where type =#{type}
+
+    </select>
+
 </mapper>

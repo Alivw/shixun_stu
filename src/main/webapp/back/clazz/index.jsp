@@ -64,5 +64,19 @@
     </div>
 
 </div>
+<script>
+    $(function(){
 
+
+        //页面加载完成之后查询所有班级类型的标签信息
+        $.get("${pageContext.request.contextPath}/tag/find/班级",{},function(res){
+            //console.log(res);
+            //班级标签的集合 res:返回的标签集合 i:索引 tag:每一个标签对象
+            $.each(res,function(i,tag){
+                var option = $("<option/>").text(tag.name).val(tag.id);
+                $("#tagid").append(option);
+            });
+        });
+    })
+</script>
 </body>

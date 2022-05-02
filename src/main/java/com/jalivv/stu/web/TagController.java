@@ -5,9 +5,7 @@ import com.jalivv.stu.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +28,13 @@ public class TagController {
     public String save(Tag tag) {
         tagService.save(tag);
         return "redirect:/tag/list";
+    }
+
+    //根据标签的类型查询对应的标签信息
+    @RequestMapping("/find/{type}")
+    @ResponseBody
+    public List<Tag> findByType(@PathVariable("type") String type){
+        return tagService.findByType(type);
     }
 
 }
