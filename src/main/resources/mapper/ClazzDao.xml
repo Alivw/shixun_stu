@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jalivv.stu.dao.ClazzDao">
+
+
+    <resultMap id="clazzMap" type="com.jalivv.stu.entity.Clazz">
+        <!--用来封装主键-->
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="tag_id" property="tagId"></result>
+        <!--封装对象-->
+        <association property="tag" javaType="com.jalivv.stu.entity.Tag">
+            <id column="tid" property="id"></id>
+            <result column="tname" property="name"></result>
+            <result column="type" property="type"></result>
+            <result column="tcreatetime" property="createtime"></result>
+        </association>
+    </resultMap>
+
+<!--    <select id="findAll" resultType="com.jalivv.stu.entity.Clazz" >-->
+<!--        select id,name,tag_id from t_clazz-->
+<!--    </select>-->
+
+
+    <select id="findAll" resultMap="clazzMap">
+        select c.id,c.name,c.tag_id,t.id tid,t.name tname ,t.type ttype,t.createtime tcreatetime from
+        t_clazz c join t_tag t  on c.tag_id =t.id order by c.id
+    </select>
+
+</mapper>

@@ -13,5 +13,7 @@ import lombok.experimental.Accessors;
 public class Clazz {
     private String id;
     private String name;
-    private String tagid;//标签外键
+    private String tagId;//标签外键
+
+    private Tag tag;
 }

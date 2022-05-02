@@ -30,7 +30,17 @@
                     <th>所属标签</th>
                     <th>操作</th>
                 </tr>
-
+                <c:forEach items="${requestScope.clazzes}" var="clazz">
+                    <tr>
+                        <td>${clazz.id}</td>
+                        <td>${clazz.name}</td>
+                        <td>${clazz.tag.name}</td>
+                        <td>
+                            <a href="" class="btn btn-info">修改</a>
+                            <a href="" class="btn btn-danger">删除</a>
+                        </td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </div>
