@@ -35,4 +35,8 @@
         insert into t_group values(#{id},#{name},#{content},#{clazzId})
     </insert>
 
+
+    <select id="findByClazzId" parameterType="String" resultType="com.jalivv.stu.entity.Group">
+        select id,name,content,clazz_id from t_group where clazz_id = #{id}
+    </select>
 </mapper>

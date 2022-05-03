@@ -24,4 +24,9 @@ public class GroupServiceImpl implements GroupService {
     public void save(Group group) {
         groupDao.save(group);
     }
+
+    @Override
+    public List<Group> findByClazzId(String id) {
+        return groupDao.findByClazzId(id);
+    }
 }

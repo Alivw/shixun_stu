@@ -58,4 +58,5 @@ public class TagController {
         }
         return "redirect:/tag/list?a="+new Random().nextDouble();
     }
+
 }

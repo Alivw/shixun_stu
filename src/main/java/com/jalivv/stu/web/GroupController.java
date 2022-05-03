@@ -39,4 +39,11 @@ public class GroupController {
         groupService.save(group);
         return "redirect:/group/list";
     }
+
+    //根据班级id查询小组信息
+    @RequestMapping("findByClazzId")
+    @ResponseBody
+    public List<Group> findByClazzId(String id){
+        return groupService.findByClazzId(id);
+    }
 }

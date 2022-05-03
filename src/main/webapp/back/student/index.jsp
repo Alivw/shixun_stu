@@ -61,7 +61,7 @@
     <%--添加按钮--%>
     <div class="row" style="margin-bottom: 14px;">
         <div class="col-sm-12">
-            <a href="" class="btn btn-success">添加</a>
+            <a href="${pageContext.request.contextPath}/student/add" class="btn btn-success">添加</a>
         </div>
     </div>
 

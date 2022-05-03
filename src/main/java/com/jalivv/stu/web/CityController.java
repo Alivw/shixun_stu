@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -36,5 +37,12 @@ public class CityController {
         }
         cityService.save(city);
         return "redirect:/city/list";
+    }
+
+
+    @RequestMapping("/findAllJSON")
+    @ResponseBody
+    public List<City> findAllJSON(){
+        return cityService.findAll();
     }
 }
