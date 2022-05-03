@@ -42,7 +42,7 @@
                         <td><fmt:formatDate value="${tag.createtime}"/></td>
                         <td>
                             <a href="" class="btn btn-info">修改</a>
-                            <a href="" class="btn btn-danger">删除</a>
+                            <button id ="deleteBtn" onclick='deleteRow(${tag.id})' class="btn btn-danger">删除</button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -74,12 +74,32 @@
 </div>
 
 <script>
+    function deleteRow(r){
+
+        if (confirm("确定要做掉吗？")) {
+            //获取 将要删除元素的id
+
+            console.log(r)
+            // alert(param);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/tag/delete/"+r,
+                type: "POST"
+            });
+        }
+    }
+
+
     $(function(){
 
+        // 表单验证
         $("#inputForm").submit(function(){
             if(!$("#name").val()){alert('请输入标签名称');return false;}
             return true;
         });
+
+
+        $.get('${pageContext.request.contextPath}/tag/list',null,null)
+
 
     });
 </script>

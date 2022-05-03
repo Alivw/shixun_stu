@@ -8,7 +8,7 @@ public interface BaseDao<T, K> {
 
     void update(T t);
 
-    void delete(K k);
+    Integer delete(List<K> ks);
 
     T findById(K k);
 

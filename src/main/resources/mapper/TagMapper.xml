@@ -43,4 +43,14 @@
 
     </select>
 
+    <delete id="delete" parameterType="list" >
+        delete from t_tag
+        <where>
+        id in
+            <foreach collection="list" open="(" close=")" separator="," item="item">
+                #{item}
+            </foreach>
+        </where>
+    </delete>
+
 </mapper>

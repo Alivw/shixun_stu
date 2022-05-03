@@ -26,7 +26,7 @@
 
     <select id="findAll" resultMap="clazzMap">
         select c.id,c.name,c.tag_id,t.id tid,t.name tname ,t.type ttype,t.createtime tcreatetime from
-        t_clazz c join t_tag t  on c.tag_id =t.id order by c.id
+        t_clazz c left  join t_tag t  on c.tag_id =t.id order by c.id
     </select>
 
 </mapper>

@@ -32,4 +32,12 @@ public class TagServiceImpl implements TagService {
         return tagDao.findByType(type);
 
     }
+
+    @Override
+    public void delete(List<Integer> ids) {
+        Integer row = tagDao.delete(ids);
+        if (row == 0) {
+            throw new RuntimeException("删除的记录不存在");
+        }
+    }
 }
