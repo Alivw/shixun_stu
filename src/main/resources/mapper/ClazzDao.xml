@@ -29,4 +29,10 @@
         t_clazz c left  join t_tag t  on c.tag_id =t.id order by c.id
     </select>
 
+
+
+    <!--save方法Basedao父接口已存在，所以在ClazzDao中不需要定义该接口-->
+    <insert id="save" parameterType="com.jalivv.stu.entity.Clazz" useGeneratedKeys="true" keyProperty="id">
+        insert into t_clazz values(#{id},#{name},#{tagId})
+    </insert>
 </mapper>

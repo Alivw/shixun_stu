@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tagid">选择对应标签:</label>
-                    <select name="tagid" id="tagid" class="form-control">
+                    <select name="tagId" id="tagid" class="form-control">
 
                     </select>
                 </div>

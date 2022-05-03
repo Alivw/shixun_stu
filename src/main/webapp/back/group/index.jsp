@@ -30,7 +30,19 @@
                     <th>所属班级</th>
                     <th>操作</th>
                 </tr>
+                <c:forEach items="${requestScope.groups}" var="group">
+                    <tr>
+                        <td>${group.id}</td>
+                        <td>${group.name}</td>
+                        <td>${group.content}</td>
+                        <td>${group.clazz.name}</td>
+                        <td>
+                            <a href="" class="btn btn-info">修改</a>
+                            <a href="" class="btn btn-danger">删除</a>
+                        </td>
+                    </tr>
 
+                </c:forEach>
             </table>
         </div>
     </div>
@@ -38,7 +50,7 @@
     <%--添加表单--%>
     <div class="row">
         <div class="col-sm-12">
-            <form id="inputForm" class="form-inline" action="${pageContext.request.contextPath}/group/save" method="post">
+            <form id="inputForm" class="form-inline" action="${pageContext.request.contextPath}/group/save" method="POST">
                 <div class="form-group">
                     <label for="name">名称:</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="请输入小组名称">
@@ -49,7 +61,7 @@
                 </div>
                 <div class="form-group">
                     <label for="clazzs">选择班级:</label>
-                    <select name="clazzid" class="form-control" id="clazzs">
+                    <select name="clazzId" class="form-control" id="clazzs">
 
                     </select>
                 </div>
@@ -59,6 +71,17 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(function(){
+        //发送异步请求查询所有的班级信息
+        $.get("${pageContext.request.contextPath}/clazz/findAllClazzJSON",function(res){
+            //console.log(res);
+            $.each(res,function(index,clazz){
+                var option = $("<option/>").text(clazz.name).val(clazz.id);
+                $("#clazzs").append(option);
+            });
+        });
+    })
+</script>
 </body>
 

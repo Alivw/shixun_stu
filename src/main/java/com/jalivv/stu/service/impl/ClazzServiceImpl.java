@@ -21,6 +21,6 @@ public class ClazzServiceImpl implements ClazzService {
 
     @Override
     public void save(Clazz clazz) {
-
+        clazzDao.save(clazz);
     }
 }
