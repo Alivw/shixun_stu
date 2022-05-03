@@ -80,4 +80,11 @@
             </if>
         </where>
     </select>
+
+
+
+    <!--保存学生信息-->
+    <insert id="save" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
+        insert into t_student values (#{id},#{name},#{age},#{bir},#{phone},#{qq},#{attr},#{starts},#{mark},#{cityId},#{clazzId},#{groupId})
+    </insert>
 </mapper>

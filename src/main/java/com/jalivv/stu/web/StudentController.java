@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Currency;
 import java.util.List;
 
 @Controller
@@ -38,4 +37,11 @@ public class StudentController {
         return "back/student/index";
     }
 
+
+    //学生添加方法
+    @RequestMapping("/save")
+    public String save(Student student){
+        studentService.save(student);
+        return "redirect:/student/list";
+    }
 }
