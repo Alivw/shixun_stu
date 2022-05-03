@@ -47,34 +47,37 @@
     </resultMap>
 
     <select id="findAll" resultMap="studentMap">
-        SELECT s.id,s.name,s.age,s.bir,s.phone,s.qq,s.attr,s.starts,s.mark,s.cityid,s.clazzid,s.groupid,
+        SELECT 		s.id,s.name,s.age,s.bir,s.phone,s.qq,s.attr,s.starts,s.mark,s.cityid,s.clazzid,s.groupid,
         c.id cid,c.name cname,c.createtime ccreatetime,c.numbers cnumbers,
         cl.id clid,cl.name clname,
         g.id gid,g.name gname,g.content gcontent,
-        <!--新增查询显示字段-->
         t.id tid,t.name tname,t.createtime tcreatetime
-
-        FROM t_student s
+        FROM (SELECT * FROM t_student s
+        <where>
+            <if test="col!=null and col!='' and val!=null and val!=''">
+                ${col} like concat('%',#{val},'%')
+            </if>
+        </where>
+        LIMIT #{start},#{pageSize}) s
         LEFT JOIN t_city c
         ON s.cityid = c.id
         LEFT JOIN t_clazz cl
         ON s.clazzid = cl.id
         LEFT JOIN t_group g
         ON s.groupid = g.id
-
-        <!--新增查询条件-->
         LEFT JOIN t_student_tag st
         ON s.id = st.studentid
         LEFT JOIN t_tag t
         ON st.tagid = t.id
+    </select>
 
 
+    <select id="counts" resultType="int">
+        select count(id) from t_student s
         <where>
             <if test="col!=null and col!='' and val!=null and val!=''">
-
                 ${col} like concat('%',#{val},'%')
             </if>
         </where>
     </select>
-
 </mapper>

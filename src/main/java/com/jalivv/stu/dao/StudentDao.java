@@ -10,5 +10,9 @@ import java.util.List;
 public interface StudentDao extends BaseDao<Student,Integer>{
 
 
-    List<Student> findAll(@Param("col") String searchCol, @Param("val") String searchValue);
+    List<Student> findAll(@Param("col") String searchCol, @Param("val") String searchValue, @Param("start") Integer start, @Param("pageSize") Integer pageSize);
+
+
+    //根据条件查询学生的总记录数
+    Integer counts(@Param("col") String searchCol, @Param("val") String searchValue);
 }

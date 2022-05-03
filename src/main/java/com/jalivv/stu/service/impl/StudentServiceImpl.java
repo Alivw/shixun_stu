@@ -18,11 +18,18 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAll() {
         return studentDao.findAll();
     }
-    public List<Student> findAll(String searchCol,String searchValue) {
-        return studentDao.findAll(searchCol,searchValue);
+
+    public List<Student> findAll(String searchCol, String searchValue, Integer pageNo, Integer pageSize) {
+        Integer start = (pageNo - 1) * pageSize;
+        return studentDao.findAll(searchCol,searchValue,start,pageSize);
     }
     @Override
     public void save(Student student) {
 
+    }
+
+    @Override
+    public Integer counts(String searchCol, String searchValue) {
+        return studentDao.counts(searchCol, searchValue);
     }
 }
